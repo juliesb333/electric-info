@@ -57,6 +57,27 @@
       display: none;
       color: #777;
       margin-top: 8px;
+
+    .category {
+    margin-bottom: 24px;
+  }
+  
+  .category-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 16px 0 8px;
+  }
+  
+  .cert-list {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+  }
+  
+  .cert-item {
+    margin-bottom: 4px;
+  }
+
     }
   </style>
 </head>
@@ -76,83 +97,136 @@
   </div>
 
   <!-- 자격증 목록 -->
-  <ul id="certList">
-    <!-- 전기일반 -->
-    <li><a href="jeongi-eungyong-gisulsa.html">전기응용기술사</a></li>
-    <li><a href="jeongi-gineungjang.html">전기기능장</a></li>
-    <li><a href="jeongi-gisa.html">전기기사</a></li>
-    <li><a href="jeongi-gongsa-gisa.html">전기공사기사</a></li>
-    <li><a href="jeongi-sanup-gisa.html">전기산업기사</a></li>
-    <li><a href="jeongi-gongsa-sanup-gisa.html">전기공사산업기사</a></li>
-  
-    <!-- 전기설비 -->
-    <li><a href="jeongiseolbi-balsongbaejun-gisulsa.html">발송배전기술사</a></li>
-    <li><a href="jeongiseolbi-architecture-elec-facility.html">건축전기설비기술사</a></li>
-    <li><a href="jeongiseolbi-railway-elec-tech.html">전기철도기술사</a></li>
-    <li><a href="jeongiseolbi-railway-elec-gisa.html">전기철도기사</a></li>
-    <li><a href="jeongiseolbi-railway-elec-sanup.html">전기철도산업기사</a></li>
-    <li><a href="jeongiseolbi-rail-signal-tech.html">철도신호기술사</a></li>
-    <li><a href="jeongiseolbi-rail-signal-gisa.html">철도신호기사</a></li>
-    <li><a href="jeongiseolbi-rail-signal-sanup.html">철도신호산업기사</a></li>
-    <li><a href="jeongiseolbi-elevator-gisa.html">승강기기사</a></li>
-    <li><a href="jeongiseolbi-elevator-sanup.html">승강기산업기사</a></li>
-  
-    <!-- 전자일반 -->
-    <li><a href="jeonjailban-elec-application-tech.html">전자응용기술사</a></li>
-    <li><a href="jeonjailban-elec-gisa.html">전자기사</a></li>
-    <li><a href="jeonjailban-elec-sanup.html">전자산업기사</a></li>
-    <li><a href="jeonjailban-3d-printer-sanup.html">3D프린터개발산업기사</a></li>
-    <li><a href="jeonjailban-robot-structure-gisa.html">로봇기구개발기사</a></li>
-    <li><a href="jeonjailban-robot-software-gisa.html">로봇소프트웨어개발기사</a></li>
-    <li><a href="jeonjailban-robot-hardware-gisa.html">로봇하드웨어개발기사</a></li>
-    <li><a href="jeonjailban-industrial-measure-tech.html">산업계측제어기술사</a></li>
-    <li><a href="jeonjailban-industrial-measure-gisa.html">공업계측제어기사(폐지)</a></li>
-    <li><a href="jeonjailban-industrial-measure-sanup.html">공업계측제어산업기사(폐지)</a></li>
-  
-    <!-- 반도체 -->
-    <li><a href="bandoche-design-gisa.html">반도체설계기사(폐지)</a></li>
-    <li><a href="bandoche-design-sanup.html">반도체설계산업기사</a></li>
-  
-    <!-- 전자기기 -->
-    <li><a href="jeonjagigi-master.html">전자기능장</a></li>
-  
-    <!-- 광학 -->
-    <li><a href="gwanghak-gisa.html">광학기사</a></li>
-    <li><a href="gwanghak-sanup.html">광학기기산업기사</a></li>
-  
-    <!-- 의공 -->
-    <li><a href="uigong-gisa.html">의공기사</a></li>
-    <li><a href="uigong-sanup.html">의공산업기사</a></li>
-  </ul>
+<div id="certContainer">
+
+  <!-- 전기일반 -->
+  <section class="category">
+    <h2 class="category-title">전기일반</h2>
+    <ul class="cert-list">
+      <li class="cert-item"><a href="jeongi-eungyong-gisulsa.html">전기응용기술사</a></li>
+      <li class="cert-item"><a href="jeongi-gineungjang.html">전기기능장</a></li>
+      <li class="cert-item"><a href="jeongi-gisa.html">전기기사</a></li>
+      <li class="cert-item"><a href="jeongi-gongsa-gisa.html">전기공사기사</a></li>
+      <li class="cert-item"><a href="jeongi-sanup-gisa.html">전기산업기사</a></li>
+      <li class="cert-item"><a href="jeongi-gongsa-sanup-gisa.html">전기공사산업기사</a></li>
+    </ul>
+  </section>
+
+  <!-- 전기설비 -->
+  <section class="category">
+    <h2 class="category-title">전기설비</h2>
+    <ul class="cert-list">
+      <li class="cert-item"><a href="jeongiseolbi-balsongbaejun-gisulsa.html">발송배전기술사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-architecture-elec-facility.html">건축전기설비기술사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-railway-elec-tech.html">전기철도기술사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-railway-elec-gisa.html">전기철도기사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-railway-elec-sanup.html">전기철도산업기사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-rail-signal-tech.html">철도신호기술사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-rail-signal-gisa.html">철도신호기사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-rail-signal-sanup.html">철도신호산업기사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-elevator-gisa.html">승강기기사</a></li>
+      <li class="cert-item"><a href="jeongiseolbi-elevator-sanup.html">승강기산업기사</a></li>
+    </ul>
+  </section>
+
+  <!-- 전자일반 -->
+  <section class="category">
+    <h2 class="category-title">전자일반</h2>
+    <ul class="cert-list">
+      <li class="cert-item"><a href="jeonjailban-elec-application-tech.html">전자응용기술사</a></li>
+      <li class="cert-item"><a href="jeonjailban-elec-gisa.html">전자기사</a></li>
+      <li class="cert-item"><a href="jeonjailban-elec-sanup.html">전자산업기사</a></li>
+      <li class="cert-item"><a href="jeonjailban-3d-printer-sanup.html">3D프린터개발산업기사</a></li>
+      <li class="cert-item"><a href="jeonjailban-robot-structure-gisa.html">로봇기구개발기사</a></li>
+      <li class="cert-item"><a href="jeonjailban-robot-software-gisa.html">로봇소프트웨어개발기사</a></li>
+      <li class="cert-item"><a href="jeonjailban-robot-hardware-gisa.html">로봇하드웨어개발기사</a></li>
+      <li class="cert-item"><a href="jeonjailban-industrial-measure-tech.html">산업계측제어기술사</a></li>
+      <li class="cert-item"><a href="jeonjailban-industrial-measure-gisa.html">공업계측제어기사(폐지)</a></li>
+      <li class="cert-item"><a href="jeonjailban-industrial-measure-sanup.html">공업계측제어산업기사(폐지)</a></li>
+    </ul>
+  </section>
+
+  <!-- 반도체 -->
+  <section class="category">
+    <h2 class="category-title">반도체</h2>
+    <ul class="cert-list">
+      <li class="cert-item"><a href="bandoche-design-gisa.html">반도체설계기사(폐지)</a></li>
+      <li class="cert-item"><a href="bandoche-design-sanup.html">반도체설계산업기사</a></li>
+    </ul>
+  </section>
+
+  <!-- 전자기기 -->
+  <section class="category">
+    <h2 class="category-title">전자기기</h2>
+    <ul class="cert-list">
+      <li class="cert-item"><a href="jeonjagigi-master.html">전자기능장</a></li>
+    </ul>
+  </section>
+
+  <!-- 광학 -->
+  <section class="category">
+    <h2 class="category-title">광학</h2>
+    <ul class="cert-list">
+      <li class="cert-item"><a href="gwanghak-gisa.html">광학기사</a></li>
+      <li class="cert-item"><a href="gwanghak-sanup.html">광학기기산업기사</a></li>
+    </ul>
+  </section>
+
+  <!-- 의공 -->
+  <section class="category">
+    <h2 class="category-title">의공</h2>
+    <ul class="cert-list">
+      <li class="cert-item"><a href="uigong-gisa.html">의공기사</a></li>
+      <li class="cert-item"><a href="uigong-sanup.html">의공산업기사</a></li>
+    </ul>
+  </section>
+
+</div>
 
   <p id="noResult" class="no-result">검색 결과가 없습니다.</p>
 
-  <script>
-    function filterCerts() {
-      const input = document.getElementById("searchInput");
-      const filter = input.value.toLowerCase();
-      const list = document.getElementById("certList");
-      const items = list.getElementsByTagName("li");
-      let visibleCount = 0;
+<script>
+  function filterCerts() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toLowerCase().trim();
 
-      for (let i = 0; i < items.length; i++) {
-        const txt = items[i].textContent.toLowerCase();
-        if (txt.includes(filter)) {
-          items[i].style.display = "";
-          visibleCount++;
-        } else {
-          items[i].style.display = "none";
-        }
-      }
+    // 모든 자격증 항목(li.cert-item)
+    const items = document.querySelectorAll(".cert-item");
+    let visibleCount = 0;
 
-      // 결과 없을 때 안내 문구
-      const noResult = document.getElementById("noResult");
-      if (filter && visibleCount === 0) {
-        noResult.style.display = "block";
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (!filter || text.includes(filter)) {
+        item.style.display = "";
+        visibleCount++;
       } else {
-        noResult.style.display = "none";
+        item.style.display = "none";
       }
+    });
+
+    // 카테고리별로, 안에 보이는 항목이 하나도 없으면 그 카테고리 전체를 숨김
+    const categories = document.querySelectorAll(".category");
+    categories.forEach(cat => {
+      const hasVisible = Array.from(cat.querySelectorAll(".cert-item"))
+        .some(li => li.style.display !== "none");
+
+      if (!filter) {
+        // 검색어 없으면 카테고리 전부 보여주기
+        cat.style.display = "";
+      } else {
+        cat.style.display = hasVisible ? "" : "none";
+      }
+    });
+
+    // "검색 결과 없음" 메시지 처리
+    const noResult = document.getElementById("noResult");
+    if (filter && visibleCount === 0) {
+      noResult.style.display = "block";
+    } else {
+      noResult.style.display = "none";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
