@@ -7,7 +7,7 @@ with open("template.html", "r", encoding="utf-8") as f:
     tpl = Template(f.read())
 
 # 2. 출력 폴더 준비
-output_dir = Path("site")
+output_dir = Path("docs")
 output_dir.mkdir(exist_ok=True)
 
 # 3. CSV 읽기
