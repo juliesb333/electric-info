@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>전기/전자 자격증 학점 정보</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -76,6 +77,32 @@
   
   .cert-item {
     margin-bottom: 4px;
+  }
+
+      @media (max-width: 480px) {
+    body {
+      margin: 24px auto;
+      padding: 0 12px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .search-box input {
+      font-size: 14px;
+      padding: 8px 32px 8px 10px;
+    }
+    .category-title {
+      font-size: 16px;
+      margin: 12px 0 6px;
+    }
+    .cert-item {
+      font-size: 14px;
+    }
   }
 
   </style>
