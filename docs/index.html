@@ -3,17 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <title>전기/전자 자격증 학점 정보</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #555;
+      margin-bottom: 24px;
+    }
+    .search-box {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px 36px 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+    .search-box span {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #888;
+      pointer-events: none;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .no-result {
+      display: none;
+      color: #777;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body>
   <h1>전기/전자 자격증 학점 정보</h1>
-  <p>보고 싶은 자격증을 선택하세요.</p>
+  <p class="subtitle">보고 싶은 자격증을 검색하거나 선택하세요.</p>
 
-  <ul>
+  <!-- 🔍 검색 박스 -->
+  <div class="search-box">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="예: 전기기사, 전자기사, 의공기사..."
+      oninput="filterCerts()"
+    >
+    <span>🔍</span>
+  </div>
+
+  <!-- 자격증 목록 -->
+  <ul id="certList">
     <li><a href="jeongi-gisa.html">전기기사</a></li>
     <li><a href="jeongi-sanup-gisa.html">전기산업기사</a></li>
+    <li><a href="jeongi-gineungjang.html">전기기능장</a></li>
+    <li><a href="jeongi-eungyong-gisulsa.html">전기응용기술사</a></li>
+
     <li><a href="bandoche-design-gisa.html">반도체설계기사(폐지)</a></li>
+    <li><a href="bandoche-design-sanup.html">반도체설계산업기사</a></li>
+
     <li><a href="gwanghak-gisa.html">광학기사</a></li>
-    <!-- 나중에 다른 자격증도 여기 쭉쭉 추가하면 됨 -->
+    <li><a href="gwanghak-sanup.html">광학기기산업기사</a></li>
+
+    <li><a href="uigong-gisa.html">의공기사</a></li>
+    <li><a href="uigong-sanup.html">의공산업기사</a></li>
+
+    <!-- 👉 나머지 자격증들도 여기 li로 계속 추가하면 됨 -->
   </ul>
+
+  <p id="noResult" class="no-result">검색 결과가 없습니다.</p>
+
+  <script>
+    function filterCerts() {
+      const input = document.getElementById("searchInput");
+      const filter = input.value.toLowerCase();
+      const list = document.getElementById("certList");
+      const items = list.getElementsByTagName("li");
+      let visibleCount = 0;
+
+      for (let i = 0; i < items.length; i++) {
+        const txt = items[i].textContent.toLowerCase();
+        if (txt.includes(filter)) {
+          items[i].style.display = "";
+          visibleCount++;
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+
+      // 결과 없을 때 안내 문구
+      const noResult = document.getElementById("noResult");
+      if (filter && visibleCount === 0) {
+        noResult.style.display = "block";
+      } else {
+        noResult.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
