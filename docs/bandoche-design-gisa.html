@@ -54,6 +54,71 @@
       margin-top: 24px;
       min-height: 60px;
     }
+    /* 학점은행제 학위 안내 박스 */
+    .degree-section {
+      margin-top: 32px;
+      padding: 16px;
+      background-color: #F2EDE4;   /* 메인 사이트랑 톤 맞추기 */
+      border: 1px solid #D9CAB3;
+      border-radius: 8px;
+    }
+
+    .degree-section h2 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #343434;
+    }
+
+    .degree-section p {
+      margin: 4px 0 12px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .degree-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .degree-card {
+      flex: 1 1 220px;
+      border: 1px solid #D9CAB3;
+      border-radius: 8px;
+      background-color: #ffffff;
+      overflow: hidden;
+    }
+
+    .degree-card-header {
+      text-align: center;
+      padding: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      background-color: #F8F2EA;
+      color: #343434;
+      border-bottom: 1px solid #D9CAB3;
+    }
+
+    .degree-card ul {
+      margin: 8px 16px 12px;
+      padding-left: 18px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    /* 모바일에서 1열로 */
+    @media (max-width: 480px) {
+      .degree-section {
+        margin-top: 24px;
+        padding: 12px;
+      }
+      .degree-section h2 {
+        font-size: 18px;
+      }
+      .degree-grid {
+        flex-direction: column;
+      }
+    }
 
     /* ✅ 작은 화면(모바일)에서 폰트/여백 조정 */
     @media (max-width: 480px) {
@@ -112,7 +177,44 @@
     ※ 실제 인정 학점과 전공 인정 여부는 연도·세부 전공에 따라 달라질 수 있습니다.<br>
     최신 정보는 국가평생교육진흥원 학점은행제 공지에서 다시 확인하세요.
   </p>
-  
+    <section class="degree-section">
+    <h2>학점은행제 학위 과정 한눈에 보기</h2>
+    <p>
+      학점은행제에는 <strong>전문학사</strong>와 <strong>학사</strong> 과정이 있으며,
+      「학점인정 등에 관한 법률」 제8조제1호에 따라
+      대학·전문대학 졸업과 동등한 학력을 인정받습니다.
+    </p>
+    <p>
+      일선 학점은 의무 학점이 아니며, 전공·교양·일선 학습구분에 상관없이
+      자유롭게 채울 수 있는 영역입니다.
+      <span style="font-size: 12px; color:#777;">(출처: 국가평생교육진흥원 학점은행제)</span>
+    </p>
+
+    <div class="degree-grid">
+      <!-- 전문학사 카드 -->
+      <div class="degree-card">
+        <div class="degree-card-header">전문학사</div>
+        <ul>
+          <li>총 <strong>80학점</strong></li>
+          <li>전공 45학점</li>
+          <li>교양 15학점</li>
+          <li>일선 20학점</li>
+        </ul>
+      </div>
+
+      <!-- 학사 카드 -->
+      <div class="degree-card">
+        <div class="degree-card-header">학사</div>
+        <ul>
+          <li>총 <strong>140학점</strong></li>
+          <li>전공 60학점</li>
+          <li>교양 30학점</li>
+          <li>일선 50학점</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <p class="note">
     <a href="index.html">← 자격증 목록으로 돌아가기</a>
   </p>
