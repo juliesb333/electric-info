@@ -59,28 +59,47 @@
       min-height: 60px;
     }
 
-    /* ✅ 작은 화면(모바일)에서 폰트/여백 조정 */
-    @media (max-width: 480px) {
-      body {
-        margin: 24px auto;
-        padding: 0 12px;
-      }
-      h1 {
-        font-size: 24px;
-        margin-bottom: 6px;
-      }
-      .subtitle {
-        font-size: 14px;
-        margin-bottom: 16px;
-      }
-      th, td {
-        padding: 6px 8px;
-        font-size: 14px;
-      }
-      .note {
-        font-size: 12px;
-      }
-    }
+  /* 📱 작은 화면(모바일)에서 폰트/여백 + 학위 박스 조정 */
+@media (max-width: 480px) {
+  body {
+    margin: 24px auto;
+    padding: 0 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  th, td {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  .note {
+    font-size: 12px;
+  }
+
+  /* ⬇️ 학위 박스 관련 (원래 “모바일에서 1열로” 블록) */
+  .degree-section {
+    margin-top: 24px;
+    padding: 12px;
+  }
+
+  .degree-section h2 {
+    font-size: 18px;
+  }
+
+  .degree-grid {
+    flex-direction: column;
+  }
+}
+
   </style>
 </head>
 <body>
