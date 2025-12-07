@@ -139,10 +139,41 @@
       .note {
         font-size: 12px;
       }
+
+      .degree-section {
+        margin-top: 20px;       /* 위 여백 조금 줄이기 */
+        padding: 10px;          /* 박스 안 좌우/상하 패딩 줄이기 */
+        border-radius: 10px;
+      }
+    
+      .degree-grid {
+        flex-direction: column; /* 카드 세로로 쌓기 */
+        gap: 10px;              /* 카드 사이 간격도 살짝 줄이기 */
+      }
+    
+      .degree-card {
+        border-radius: 8px;
+      }
+    
+      .degree-card-header {
+        font-size: 14px;
+        padding: 6px;
+      }
+    
+      .degree-card ul {
+        margin: 8px 12px 10px;
+        font-size: 13px;
+      }
+    
+      .degree-section p {
+        font-size: 13px;
+      }
     }
+
   </style>
 </head>
 <body>
+  
   <h1>광학기사</h1>
   <div class="subtitle">광학 계열 / 직무번호 01</div>
 
@@ -192,6 +223,46 @@
     </tr>
   </table>
   
+ <section class="degree-section">
+  <h2>학점은행제 학위 과정 한눈에 보기</h2>
+  <p>
+    학점은행제에는 <strong>전문학사</strong>와 <strong>학사</strong> 과정이 있으며,
+    「학점인정 등에 관한 법률」 제8조제1호에 따라
+    대학·전문대학 졸업과 동등한 학력을 인정받습니다.
+  </p>
+  <p>
+    일선 학점은 의무 학점이 아니며, 전공·교양·일선 학습구분에 상관없이
+    자유롭게 채울 수 있는 영역입니다.
+  </p>
+  <p class="degree-source">
+    출처: 국가평생교육진흥원 학점은행제
+  </p>
+
+  <div class="degree-grid">
+    <!-- 전문학사 카드 -->
+    <div class="degree-card">
+      <div class="degree-card-header">전문학사</div>
+      <ul>
+        <li>총 <strong>80학점</strong></li>
+        <li>전공 45학점</li>
+        <li>교양 15학점</li>
+        <li>일선 20학점</li>
+      </ul>
+    </div>
+
+    <!-- 학사 카드 -->
+    <div class="degree-card">
+      <div class="degree-card-header">학사</div>
+      <ul>
+        <li>총 <strong>140학점</strong></li>
+        <li>전공 60학점</li>
+        <li>교양 30학점</li>
+        <li>일선 50학점</li>
+      </ul>
+    </div>
+  </div>
+</section>
+ 
   <p class="note">
     <a href="index.html">← 자격증 목록으로 돌아가기</a>
   </p>
