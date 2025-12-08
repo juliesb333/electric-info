@@ -8,21 +8,54 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
   <style>
+  /* ───── 전체 배경(회색) ───── */
   body {
     font-family: "Gowun Dodum", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    max-width: 720px;
-    margin: 40px auto;
-    padding: 0 16px;
-    line-height: 1.6;
-    background-color: #F8F6F1;
+    margin: 0;
+    padding: 0;
+    background-color: #e5e5e5;   /* 화면 전체 회색 */
     color: #343434;
+  }
+
+  /* ───── 레이아웃: 왼 광고 / 가운데 종이 / 오른 광고 ───── */
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(auto, 720px) minmax(0, 1fr);
+    gap: 16px;
+    padding: 40px 16px;
+    box-sizing: border-box;
+  }
+
+  /* 가운데 A4 종이 박스 (베이지 유지!) */
+  .paper {
+    background-color: #F8F6F1;   /* 기존 베이지 색 */
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    line-height: 1.6;
+  }
+
+  /* 좌우 광고 영역 */
+  .side-ad {
+    min-width: 160px;
+    height: 600px;              /* 임시 높이 (나중에 광고 코드 들어가면 조정 가능) */
+    position: sticky;
+    top: 80px;
+    /* 개발 중 위치 확인용 (원하면 주석 해제)
+    border: 1px dashed #bbb;
+    */
   }
 
   h1 {
     font-size: 32px;
-    margin-bottom: 8px;
+    margin: 0 0 8px;
     color: #343434;
+  }
+
+  .page-title {
+    text-align: left;   /* 가운데 정렬 원하면 center 로 변경 */
   }
 
   .subtitle {
@@ -100,202 +133,226 @@
     padding-left: 8px;
   }
 
-    /* 기본: 데스크탑에서는 3열 */
+  /* 기본: 데스크탑에서는 3열 */
   .cert-list {
     list-style: disc;
     padding-left: 20px;
     margin: 0;
-    column-count: 3;        /* 3개의 열로 나누기 */
-    column-gap: 32px;       /* 열 사이 간격 */
+    column-count: 3;
+    column-gap: 32px;
   }
 
   .cert-item {
     margin-bottom: 4px;
-    break-inside: avoid;            /* 열 나눌 때 항목이 잘리지 않도록 */
+    break-inside: avoid;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
   }
 
-  /* 📱 모바일에서 살짝 줄이기 */
-    @media (max-width: 480px) {
-    body {
-      margin: 24px auto;
-      padding: 0 12px;
+  /* 📱 모바일 */
+  @media (max-width: 768px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 24px 12px;
     }
+
+    .side-ad {
+      display: none;  /* 모바일에서는 광고 영역 숨김 */
+    }
+
+    .paper {
+      padding: 24px 16px;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
     h1 {
       font-size: 24px;
       margin-bottom: 6px;
     }
+
     .subtitle {
       font-size: 14px;
       margin-bottom: 16px;
     }
+
     .search-box input {
       font-size: 14px;
       padding: 8px 32px 8px 10px;
     }
+
     .category-title {
       font-size: 16px;
       margin: 12px 0 6px;
     }
+
     .cert-item {
       font-size: 14px;
     }
+
     .cert-list {
-      column-count: 1;   /* 모바일에서는 다시 1열 */
+      column-count: 1;
       column-gap: 16px;
     }
   }
 
-</style>
-
+  </style>
 </head>
+
 <body>
-  <h1>전기/전자 자격증 학점 정보</h1>
-  <p class="subtitle">보고 싶은 자격증을 검색하거나 선택하세요.</p>
+  <div class="layout">
+    <!-- 왼쪽 광고 영역 -->
+    <aside class="side-ad">
+      <!-- 여기에 나중에 애드센스 코드 -->
+    </aside>
 
-  <!-- 🔍 검색 박스 -->
-  <div class="search-box">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="예: 전기기사, 전자기사, 의공기사..."
-      oninput="filterCerts()"
-    >
-    <span>🔍</span>
+    <!-- 가운데 A4 용지 영역 -->
+    <main class="paper">
+      <h1 class="page-title">전기/전자 자격증 학점 정보</h1>
+      <p class="subtitle">보고 싶은 자격증을 검색하거나 선택하세요.</p>
+
+      <!-- 🔍 검색 박스 -->
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="예: 전기기사, 전자기사, 의공기사..."
+          oninput="filterCerts()"
+        >
+        <span>🔍</span>
+      </div>
+
+      <!-- 자격증 목록 -->
+      <div id="certContainer">
+        <!-- 전기일반 -->
+        <section class="category">
+          <h2 class="category-title">전기일반</h2>
+          <ul class="cert-list">
+            <li class="cert-item"><a href="jeongi-eungyong-gisulsa.html">전기응용기술사</a></li>
+            <li class="cert-item"><a href="jeongi-gineungjang.html">전기기능장</a></li>
+            <li class="cert-item"><a href="jeongi-gisa.html">전기기사</a></li>
+            <li class="cert-item"><a href="jeongi-gongsa-gisa.html">전기공사기사</a></li>
+            <li class="cert-item"><a href="jeongi-sanup-gisa.html">전기산업기사</a></li>
+            <li class="cert-item"><a href="jeongi-gongsa-sanup-gisa.html">전기공사산업기사</a></li>
+          </ul>
+        </section>
+
+        <!-- 전기설비 -->
+        <section class="category">
+          <h2 class="category-title">전기설비</h2>
+          <ul class="cert-list">
+            <li class="cert-item"><a href="jeongiseolbi-balsongbaejun-gisulsa.html">발송배전기술사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-architecture-elec-facility.html">건축전기설비기술사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-railway-elec-tech.html">전기철도기술사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-railway-elec-gisa.html">전기철도기사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-railway-elec-sanup.html">전기철도산업기사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-rail-signal-tech.html">철도신호기술사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-rail-signal-gisa.html">철도신호기사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-rail-signal-sanup.html">철도신호산업기사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-elevator-gisa.html">승강기기사</a></li>
+            <li class="cert-item"><a href="jeongiseolbi-elevator-sanup.html">승강기산업기사</a></li>
+          </ul>
+        </section>
+
+        <!-- 전자일반 -->
+        <section class="category">
+          <h2 class="category-title">전자일반</h2>
+          <ul class="cert-list">
+            <li class="cert-item"><a href="jeonjailban-elec-application-tech.html">전자응용기술사</a></li>
+            <li class="cert-item"><a href="jeonjailban-elec-gisa.html">전자기사</a></li>
+            <li class="cert-item"><a href="jeonjailban-elec-sanup.html">전자산업기사</a></li>
+            <li class="cert-item"><a href="jeonjailban-3d-printer-sanup.html">3D프린터개발산업기사</a></li>
+            <li class="cert-item"><a href="jeonjailban-robot-structure-gisa.html">로봇기구개발기사</a></li>
+            <li class="cert-item"><a href="jeonjailban-robot-software-gisa.html">로봇소프트웨어개발기사</a></li>
+            <li class="cert-item"><a href="jeonjailban-robot-hardware-gisa.html">로봇하드웨어개발기사</a></li>
+            <li class="cert-item"><a href="jeonjailban-industrial-measure-tech.html">산업계측제어기술사</a></li>
+            <li class="cert-item"><a href="jeonjailban-industrial-measure-gisa.html">공업계측제어기사(폐지)</a></li>
+            <li class="cert-item"><a href="jeonjailban-industrial-measure-sanup.html">공업계측제어산업기사(폐지)</a></li>
+          </ul>
+        </section>
+
+        <!-- 반도체 -->
+        <section class="category">
+          <h2 class="category-title">반도체</h2>
+          <ul class="cert-list">
+            <li class="cert-item"><a href="bandoche-design-gisa.html">반도체설계기사(폐지)</a></li>
+            <li class="cert-item"><a href="bandoche-design-sanup.html">반도체설계산업기사</a></li>
+          </ul>
+        </section>
+
+        <!-- 전자기기 -->
+        <section class="category">
+          <h2 class="category-title">전자기기</h2>
+          <ul class="cert-list">
+            <li class="cert-item"><a href="jeonjagigi-master.html">전자기능장</a></li>
+          </ul>
+        </section>
+
+        <!-- 광학 -->
+        <section class="category">
+          <h2 class="category-title">광학</h2>
+          <ul class="cert-list">
+            <li class="cert-item"><a href="gwanghak-gisa.html">광학기사</a></li>
+            <li class="cert-item"><a href="gwanghak-sanup.html">광학기기산업기사</a></li>
+          </ul>
+        </section>
+
+        <!-- 의공 -->
+        <section class="category">
+          <h2 class="category-title">의공</h2>
+          <ul class="cert-list">
+            <li class="cert-item"><a href="uigong-gisa.html">의공기사</a></li>
+            <li class="cert-item"><a href="uigong-sanup.html">의공산업기사</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <p id="noResult" class="no-result">검색 결과가 없습니다.</p>
+
+      <script>
+        function filterCerts() {
+          const input = document.getElementById("searchInput");
+          const filter = input.value.toLowerCase().trim();
+
+          const items = document.querySelectorAll(".cert-item");
+          let visibleCount = 0;
+
+          items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (!filter || text.includes(filter)) {
+              item.style.display = "";
+              visibleCount++;
+            } else {
+              item.style.display = "none";
+            }
+          });
+
+          const categories = document.querySelectorAll(".category");
+          categories.forEach(cat => {
+            const hasVisible = Array.from(cat.querySelectorAll(".cert-item"))
+              .some(li => li.style.display !== "none");
+
+            if (!filter) {
+              cat.style.display = "";
+            } else {
+              cat.style.display = hasVisible ? "" : "none";
+            }
+          });
+
+          const noResult = document.getElementById("noResult");
+          if (filter && visibleCount === 0) {
+            noResult.style.display = "block";
+          } else {
+            noResult.style.display = "none";
+          }
+        }
+      </script>
+    </main>
+
+    <!-- 오른쪽 광고 영역 -->
+    <aside class="side-ad">
+      <!-- 오른쪽 광고 코드 -->
+    </aside>
   </div>
-
-  <!-- 자격증 목록 -->
-<div id="certContainer">
-
-  <!-- 전기일반 -->
-  <section class="category">
-    <h2 class="category-title">전기일반</h2>
-    <ul class="cert-list">
-      <li class="cert-item"><a href="jeongi-eungyong-gisulsa.html">전기응용기술사</a></li>
-      <li class="cert-item"><a href="jeongi-gineungjang.html">전기기능장</a></li>
-      <li class="cert-item"><a href="jeongi-gisa.html">전기기사</a></li>
-      <li class="cert-item"><a href="jeongi-gongsa-gisa.html">전기공사기사</a></li>
-      <li class="cert-item"><a href="jeongi-sanup-gisa.html">전기산업기사</a></li>
-      <li class="cert-item"><a href="jeongi-gongsa-sanup-gisa.html">전기공사산업기사</a></li>
-    </ul>
-  </section>
-
-  <!-- 전기설비 -->
-  <section class="category">
-    <h2 class="category-title">전기설비</h2>
-    <ul class="cert-list">
-      <li class="cert-item"><a href="jeongiseolbi-balsongbaejun-gisulsa.html">발송배전기술사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-architecture-elec-facility.html">건축전기설비기술사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-railway-elec-tech.html">전기철도기술사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-railway-elec-gisa.html">전기철도기사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-railway-elec-sanup.html">전기철도산업기사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-rail-signal-tech.html">철도신호기술사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-rail-signal-gisa.html">철도신호기사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-rail-signal-sanup.html">철도신호산업기사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-elevator-gisa.html">승강기기사</a></li>
-      <li class="cert-item"><a href="jeongiseolbi-elevator-sanup.html">승강기산업기사</a></li>
-    </ul>
-  </section>
-
-  <!-- 전자일반 -->
-  <section class="category">
-    <h2 class="category-title">전자일반</h2>
-    <ul class="cert-list">
-      <li class="cert-item"><a href="jeonjailban-elec-application-tech.html">전자응용기술사</a></li>
-      <li class="cert-item"><a href="jeonjailban-elec-gisa.html">전자기사</a></li>
-      <li class="cert-item"><a href="jeonjailban-elec-sanup.html">전자산업기사</a></li>
-      <li class="cert-item"><a href="jeonjailban-3d-printer-sanup.html">3D프린터개발산업기사</a></li>
-      <li class="cert-item"><a href="jeonjailban-robot-structure-gisa.html">로봇기구개발기사</a></li>
-      <li class="cert-item"><a href="jeonjailban-robot-software-gisa.html">로봇소프트웨어개발기사</a></li>
-      <li class="cert-item"><a href="jeonjailban-robot-hardware-gisa.html">로봇하드웨어개발기사</a></li>
-      <li class="cert-item"><a href="jeonjailban-industrial-measure-tech.html">산업계측제어기술사</a></li>
-      <li class="cert-item"><a href="jeonjailban-industrial-measure-gisa.html">공업계측제어기사(폐지)</a></li>
-      <li class="cert-item"><a href="jeonjailban-industrial-measure-sanup.html">공업계측제어산업기사(폐지)</a></li>
-    </ul>
-  </section>
-
-  <!-- 반도체 -->
-  <section class="category">
-    <h2 class="category-title">반도체</h2>
-    <ul class="cert-list">
-      <li class="cert-item"><a href="bandoche-design-gisa.html">반도체설계기사(폐지)</a></li>
-      <li class="cert-item"><a href="bandoche-design-sanup.html">반도체설계산업기사</a></li>
-    </ul>
-  </section>
-
-  <!-- 전자기기 -->
-  <section class="category">
-    <h2 class="category-title">전자기기</h2>
-    <ul class="cert-list">
-      <li class="cert-item"><a href="jeonjagigi-master.html">전자기능장</a></li>
-    </ul>
-  </section>
-
-  <!-- 광학 -->
-  <section class="category">
-    <h2 class="category-title">광학</h2>
-    <ul class="cert-list">
-      <li class="cert-item"><a href="gwanghak-gisa.html">광학기사</a></li>
-      <li class="cert-item"><a href="gwanghak-sanup.html">광학기기산업기사</a></li>
-    </ul>
-  </section>
-
-  <!-- 의공 -->
-  <section class="category">
-    <h2 class="category-title">의공</h2>
-    <ul class="cert-list">
-      <li class="cert-item"><a href="uigong-gisa.html">의공기사</a></li>
-      <li class="cert-item"><a href="uigong-sanup.html">의공산업기사</a></li>
-    </ul>
-  </section>
-
-</div>
-
-  <p id="noResult" class="no-result">검색 결과가 없습니다.</p>
-
-<script>
-  function filterCerts() {
-    const input = document.getElementById("searchInput");
-    const filter = input.value.toLowerCase().trim();
-
-    // 모든 자격증 항목(li.cert-item)
-    const items = document.querySelectorAll(".cert-item");
-    let visibleCount = 0;
-
-    items.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (!filter || text.includes(filter)) {
-        item.style.display = "";
-        visibleCount++;
-      } else {
-        item.style.display = "none";
-      }
-    });
-
-    // 카테고리별로, 안에 보이는 항목이 하나도 없으면 그 카테고리 전체를 숨김
-    const categories = document.querySelectorAll(".category");
-    categories.forEach(cat => {
-      const hasVisible = Array.from(cat.querySelectorAll(".cert-item"))
-        .some(li => li.style.display !== "none");
-
-      if (!filter) {
-        // 검색어 없으면 카테고리 전부 보여주기
-        cat.style.display = "";
-      } else {
-        cat.style.display = hasVisible ? "" : "none";
-      }
-    });
-
-    // "검색 결과 없음" 메시지 처리
-    const noResult = document.getElementById("noResult");
-    if (filter && visibleCount === 0) {
-      noResult.style.display = "block";
-    } else {
-      noResult.style.display = "none";
-    }
-  }
-</script>
-
 </body>
 </html>
