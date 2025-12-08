@@ -10,237 +10,270 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
-  
   <style>
+    /* ───── 전체 배경 (회색) ───── */
     body {
       font-family: "Gowun Dodum", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      max-width: 720px;
-      margin: 40px auto;
-      padding: 0 16px;
+      margin: 0;
+      padding: 24px 12px 40px;
       line-height: 1.6;
+      background-color: #e9ecef;   /* 원하는 회색 */
+      box-sizing: border-box;
     }
+
+    /* ───── 가운데 A4 용지 박스 ───── */
+    .paper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 24px 40px;
+      background-color: #f5f5f5;   
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
     h1 {
       font-size: 32px;
-      margin-bottom: 8px;
+      margin: 0 0 8px;
+      text-align: center;          /* 제목 가운데 정렬 */
     }
+
     .subtitle {
       color: #555;
       margin-bottom: 24px;
+      text-align: center;          /* 부제도 가운데 정렬 */
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin: 16px 0;
     }
+
     th, td {
       border: 1px solid #ddd;
       padding: 8px 10px;
       text-align: left;
     }
+
     th {
       background: #f5f5f5;
       width: 30%;
     }
+
     .note {
       margin-top: 16px;
       font-size: 0.9rem;
       color: #666;
     }
+
     a {
       color: #1a73e8;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
 
-   .ad {
-      margin-top: 24px;
+    /* 하단 광고 영역 – A4 폭에 맞춰 가운데 */
+    .ad {
+      margin: 24px auto 0;
       min-height: 60px;
+      max-width: 720px;
     }
+
     /* 학점은행제 학위 안내 박스 */
-.degree-section {
-  margin-top: 32px;
-  padding: 16px;
-  background-color: #F0EEE9;       
-  border: 1px solid #BCD5EA;        /* 파스텔 블루 테두리 */
-  border-radius: 12px;
-}
+    .degree-section {
+      margin-top: 32px;
+      padding: 16px;
+      background-color: #F0EEE9;
+      border: 1px solid #BCD5EA;
+      border-radius: 12px;
+    }
 
-.degree-section h2 {
-  font-size: 20px;
-  margin: 0 0 8px;
-  color: #343434;
-}
+    .degree-section h2 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #343434;
+    }
 
-.degree-section p {
-  margin: 4px 0 8px;
-  font-size: 14px;
-  color: #555;
-}
+    .degree-section p {
+      margin: 4px 0 8px;
+      font-size: 14px;
+      color: #555;
+    }
 
-/* 출처 라인 */
-.degree-source {
-  margin-top: 4px;
-  font-size: 12px;
-  color: #777;
-}
+    /* 출처 라인 */
+    .degree-source {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #777;
+    }
 
-.degree-grid {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
+    .degree-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
 
-.degree-card {
-  flex: 1 1 220px;
-  border: 1px solid #BCD5EA;
-  border-radius: 10px;
-  background-color: #ffffff;
-  overflow: hidden;
-}
+    .degree-card {
+      flex: 1 1 220px;
+      border: 1px solid #BCD5EA;
+      border-radius: 10px;
+      background-color: #ffffff;
+      overflow: hidden;
+    }
 
-.degree-card-header {
-  text-align: center;
-  padding: 8px;
-  font-weight: 600;
-  font-size: 15px;
-  background-color: #BCD5EA;        /* 여기도 포인트 컬러 */
-  color: #ffffff;
-  border-bottom: 1px solid #A5C6E7;
-}
+    .degree-card-header {
+      text-align: center;
+      padding: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      background-color: #BCD5EA;
+      color: #ffffff;
+      border-bottom: 1px solid #A5C6E7;
+    }
 
-.degree-card ul {
-  margin: 8px 16px 12px;
-  padding-left: 18px;
-  font-size: 14px;
-  color: #444;
-}
+    .degree-card ul {
+      margin: 8px 16px 12px;
+      padding-left: 18px;
+      font-size: 14px;
+      color: #444;
+    }
 
-    /* 📱 작은 화면(모바일)에서 폰트/여백 + 학위 박스 조정 */
+    /* 📱 모바일 */
     @media (max-width: 480px) {
       body {
-        margin: 24px auto;
-        padding: 0 10px;
+        padding: 16px 8px 32px;
       }
-    
+
+      .paper {
+        padding: 24px 16px 32px;
+        border-radius: 12px;
+        box-shadow: none;
+      }
+
       h1 {
         font-size: 24px;
         margin-bottom: 6px;
       }
-    
+
       .subtitle {
         font-size: 14px;
         margin-bottom: 16px;
       }
-    
+
       th, td {
         padding: 6px 8px;
         font-size: 14px;
       }
-    
+
       .note {
         font-size: 12px;
       }
-    
-      /* ⬇️ 학위 박스 관련 (원래 “모바일에서 1열로” 블록) */
+
       .degree-section {
         margin-top: 24px;
         padding: 12px;
       }
-    
+
       .degree-section h2 {
         font-size: 18px;
       }
-    
+
       .degree-grid {
         flex-direction: column;
       }
     }
-
   </style>
 </head>
 <body>
-  <h1>반도체설계기사(폐지)</h1>
-  <div class="subtitle">반도체 계열 / 직무번호 01</div>
 
-  <table>
-    <tr>
-      <th>종분류</th>
-      <td>반도체</td>
-    </tr>
-    <tr>
-      <th>직무번호</th>
-      <td>01</td>
-    </tr>
-    <tr>
-      <th>전문학사 인정 학점</th>
-      <td>20 학점</td>
-    </tr>
-    <tr>
-      <th>학사 인정 학점</th>
-      <td>30 학점</td>
-    </tr>
-  </table>
+  <!-- 가운데 A4 용지 -->
+  <div class="paper">
+    <h1>반도체설계기사(폐지)</h1>
+    <div class="subtitle">반도체 계열 / 직무번호 01</div>
 
-  <p>
-    <strong>반도체설계기사(폐지)</strong> 자격증은 학점은행제에서
-    전문학사 과정으로 최대 <strong>20 학점</strong>,
-    학사 과정으로 최대 <strong>30 학점</strong>까지 인정됩니다.
-  </p>
+    <table>
+      <tr>
+        <th>종분류</th>
+        <td>반도체</td>
+      </tr>
+      <tr>
+        <th>직무번호</th>
+        <td>01</td>
+      </tr>
+      <tr>
+        <th>전문학사 인정 학점</th>
+        <td>20 학점</td>
+      </tr>
+      <tr>
+        <th>학사 인정 학점</th>
+        <td>30 학점</td>
+      </tr>
+    </table>
 
-  <p class="note">
-    ※ 실제 인정 학점과 전공 인정 여부는 연도·세부 전공에 따라 달라질 수 있습니다.<br>
-    최신 정보는 국가평생교육진흥원 학점은행제 공지에서 다시 확인하세요.
-  </p>
+    <p>
+      <strong>반도체설계기사(폐지)</strong> 자격증은 학점은행제에서
+      전문학사 과정으로 최대 <strong>20 학점</strong>,
+      학사 과정으로 최대 <strong>30 학점</strong>까지 인정됩니다.
+    </p>
+
+    <p class="note">
+      ※ 실제 인정 학점과 전공 인정 여부는 연도·세부 전공에 따라 달라질 수 있습니다.<br>
+      최신 정보는 국가평생교육진흥원 학점은행제 공지에서 다시 확인하세요.
+    </p>
+
     <section class="degree-section">
-  <h2>학점은행제 학위 과정 한눈에 보기</h2>
-  <p>
-    학점은행제에는 <strong>전문학사</strong>와 <strong>학사</strong> 과정이 있으며,
-    「학점인정 등에 관한 법률」 제8조제1호에 따라
-    대학·전문대학 졸업과 동등한 학력을 인정받습니다.
-  </p>
-  <p>
-    일선 학점은 의무 학점이 아니며, 전공·교양·일선 학습구분에 상관없이
-    자유롭게 채울 수 있는 영역입니다.
-  </p>
-  <p class="degree-source">
-    출처: 국가평생교육진흥원 학점은행제
-  </p>
+      <h2>학점은행제 학위 과정 한눈에 보기</h2>
+      <p>
+        학점은행제에는 <strong>전문학사</strong>와 <strong>학사</strong> 과정이 있으며,
+        「학점인정 등에 관한 법률」 제8조제1호에 따라
+        대학·전문대학 졸업과 동등한 학력을 인정받습니다.
+      </p>
+      <p>
+        일선 학점은 의무 학점이 아니며, 전공·교양·일선 학습구분에 상관없이
+        자유롭게 채울 수 있는 영역입니다.
+      </p>
+      <p class="degree-source">
+        출처: 국가평생교육진흥원 학점은행제
+      </p>
 
-  <div class="degree-grid">
-    <!-- 전문학사 카드 -->
-    <div class="degree-card">
-      <div class="degree-card-header">전문학사</div>
-      <ul>
-        <li>총 <strong>80학점</strong></li>
-        <li>전공 45학점</li>
-        <li>교양 15학점</li>
-        <li>일선 20학점</li>
-      </ul>
-    </div>
+      <div class="degree-grid">
+        <!-- 전문학사 카드 -->
+        <div class="degree-card">
+          <div class="degree-card-header">전문학사</div>
+          <ul>
+            <li>총 <strong>80학점</strong></li>
+            <li>전공 45학점</li>
+            <li>교양 15학점</li>
+            <li>일선 20학점</li>
+          </ul>
+        </div>
 
-    <!-- 학사 카드 -->
-    <div class="degree-card">
-      <div class="degree-card-header">학사</div>
-      <ul>
-        <li>총 <strong>140학점</strong></li>
-        <li>전공 60학점</li>
-        <li>교양 30학점</li>
-        <li>일선 50학점</li>
-      </ul>
-    </div>
+        <!-- 학사 카드 -->
+        <div class="degree-card">
+          <div class="degree-card-header">학사</div>
+          <ul>
+            <li>총 <strong>140학점</strong></li>
+            <li>전공 60학점</li>
+            <li>교양 30학점</li>
+            <li>일선 50학점</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="note">
+      <a href="index.html">← 자격증 목록으로 돌아가기</a>
+    </p>
   </div>
-</section>
 
-  <p class="note">
-    <a href="index.html">← 자격증 목록으로 돌아가기</a>
-  </p>
-
-  <!-- 나중에 여기 사이에 애드센스 광고코드 넣으면 됨 -->
+  <!-- 종이 밖, 하단 광고 -->
   <div class="ad">
     <!-- ADSENSE -->
   </div>
+
 </body>
 </html>
